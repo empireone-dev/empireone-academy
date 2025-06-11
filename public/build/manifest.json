@@ -1,0 +1,73 @@
+{
+  "_layout-BUwC9bFw.js": {
+    "file": "assets/layout-BUwC9bFw.js",
+    "name": "layout",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/app.jsx": {
+    "file": "assets/app-yvhWrxdu.js",
+    "name": "app",
+    "src": "resources/js/app.jsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/app/pages/administrator/dashboard/page.jsx",
+      "_layout-BUwC9bFw.js",
+      "resources/js/app/pages/administrator/users/page.jsx",
+      "resources/js/app/pages/auth/login/page.jsx",
+      "resources/js/app/pages/auth/register/page.jsx",
+      "resources/js/app/pages/index/page.jsx"
+    ],
+    "css": [
+      "assets/app-rCplLqwj.css"
+    ]
+  },
+  "resources/js/app/pages/administrator/dashboard/page.jsx": {
+    "file": "assets/page-DIpqyk9_.js",
+    "name": "page",
+    "src": "resources/js/app/pages/administrator/dashboard/page.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_layout-BUwC9bFw.js"
+    ]
+  },
+  "resources/js/app/pages/administrator/users/page.jsx": {
+    "file": "assets/page-cXfcE9cN.js",
+    "name": "page",
+    "src": "resources/js/app/pages/administrator/users/page.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/app/pages/auth/login/page.jsx": {
+    "file": "assets/page-CtwhSq_r.js",
+    "name": "page",
+    "src": "resources/js/app/pages/auth/login/page.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/app/pages/auth/register/page.jsx": {
+    "file": "assets/page-Oj5y1XyJ.js",
+    "name": "page",
+    "src": "resources/js/app/pages/auth/register/page.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/app/pages/index/page.jsx": {
+    "file": "assets/page-D_npoWPI.js",
+    "name": "page",
+    "src": "resources/js/app/pages/index/page.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  }
+}
