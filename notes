@@ -1,10 +1,10 @@
 wpm
-accuracy
-netWPM
-startTime
-endTime
-typedText
-automaticScores
+accuracy --done
+netWPM --done
+startTime --done
+endTime--done
+typedText --done
+automaticScores --done
 
 
 
@@ -12,13 +12,17 @@ database table
 -participants/empireone_academy
 
 - exam
-* user_name/user_id
-
+* user_name
+* user_id
+* end time 
+* start time
+* total_score
 
 -scenario
 *exam_id
 * answer
 * score
+
 
 -Typing Test
 * exam_id
@@ -29,3 +33,4 @@ database table
 -Grammar and Spelling
 * exam_id
 * Score
+* sentence

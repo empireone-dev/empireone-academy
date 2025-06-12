@@ -1,6 +1,7 @@
 import { Cog6ToothIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import DisclosureComponent from "../_components/disclosure";
+import { Link } from "@inertiajs/react";
 
 export default function SidebarDesktopSection({
     navigation,
@@ -19,7 +20,7 @@ export default function SidebarDesktopSection({
                             {navigation.map((item, i) =>
                                 !item.children ? (
                                     <li key={item.name}>
-                                        <a
+                                        <Link
                                             href={item.href}
                                             className={classNames(
                                                 item.current
@@ -38,7 +39,7 @@ export default function SidebarDesktopSection({
                                                 )}
                                             />
                                             {item.name}
-                                        </a>
+                                        </Link>
                                     </li>
                                 ) : (
                                     <li key={i}>

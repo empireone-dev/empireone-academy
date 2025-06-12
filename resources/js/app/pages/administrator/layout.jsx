@@ -8,38 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 import SidebarSection from "@/app/_sections/sidebar-section";
 import TopbarSection from "@/app/_sections/topbar-section";
-
-const navigation = [
-    { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-    {
-        name: "Team",
-        href: "#",
-        icon: UsersIcon,
-        current: false,
-        children: [
-            { name: "Agent", href: "#", icon: HomeIcon, current: true },
-            { name: "Register", href: "#", icon: HomeIcon, current: false },
-        ],
-    },
-    {
-        name: "Projects",
-        href: "#",
-        icon: FolderIcon,
-        current: false,
-        children: [
-            { name: "Agent", href: "#", icon: HomeIcon, current: true },
-            { name: "Register", href: "#", icon: HomeIcon, current: false },
-        ],
-    },
-    { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
-    {
-        name: "Documents",
-        href: "#",
-        icon: DocumentDuplicateIcon,
-        current: false,
-    },
-    { name: "Reports", href: "#", icon: ChartPieIcon, current: false },
-];
+import { current } from "@reduxjs/toolkit";
 
 const userNavigation = [
     { name: "Your profile", href: "#" },
@@ -47,6 +16,39 @@ const userNavigation = [
 ];
 
 export default function Layout({ children }) {
+    const path = window.location.pathname.split("/")[2];
+    const navigation = [
+        {
+            name: "Dashboard",
+            href: "/administrator/dashboard",
+            icon: HomeIcon,
+            current: path == "dashboard",
+        },
+        // {
+        //     name: "Team",
+        //     href: "#",
+        //     icon: UsersIcon,
+        //     current: false,
+        //     children: [
+        //         { name: "Agent", href: "#", icon: HomeIcon, current: true },
+        //         { name: "Register", href: "#", icon: HomeIcon, current: false },
+        //     ],
+        // },
+        {
+            name: "Applicant",
+            href: "/administrator/applicants",
+            icon: FolderIcon,
+            current: path == "applicants",
+        },
+        // { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
+        // {
+        //     name: "Documents",
+        //     href: "#",
+        //     icon: DocumentDuplicateIcon,
+        //     current: false,
+        // },
+        // { name: "Reports", href: "#", icon: ChartPieIcon, current: false },
+    ];
     return (
         <>
             <div>

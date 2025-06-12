@@ -1,41 +1,72 @@
 {
-  "_layout-BUwC9bFw.js": {
-    "file": "assets/layout-BUwC9bFw.js",
-    "name": "layout",
-    "isDynamicEntry": true,
+  "_exam-service-v1c1vA7u.js": {
+    "file": "assets/exam-service-v1c1vA7u.js",
+    "name": "exam-service",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
   "resources/js/app.jsx": {
-    "file": "assets/app-yvhWrxdu.js",
+    "file": "assets/app-CDw63oS1.js",
     "name": "app",
     "src": "resources/js/app.jsx",
     "isEntry": true,
     "dynamicImports": [
+      "resources/js/app/pages/administrator/applicants/page.jsx",
+      "resources/js/app/pages/administrator/applicants/sections/table.jsx",
       "resources/js/app/pages/administrator/dashboard/page.jsx",
-      "_layout-BUwC9bFw.js",
+      "resources/js/app/pages/administrator/layout.jsx",
       "resources/js/app/pages/administrator/users/page.jsx",
       "resources/js/app/pages/auth/login/page.jsx",
       "resources/js/app/pages/auth/register/page.jsx",
       "resources/js/app/pages/index/page.jsx"
     ],
     "css": [
-      "assets/app-rCplLqwj.css"
+      "assets/app-BoloPIds.css"
+    ]
+  },
+  "resources/js/app/pages/administrator/applicants/page.jsx": {
+    "file": "assets/page-B5Oq7Ja_.js",
+    "name": "page",
+    "src": "resources/js/app/pages/administrator/applicants/page.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/app/pages/administrator/layout.jsx",
+      "resources/js/app/pages/administrator/applicants/sections/table.jsx",
+      "_exam-service-v1c1vA7u.js"
+    ]
+  },
+  "resources/js/app/pages/administrator/applicants/sections/table.jsx": {
+    "file": "assets/table-DCtnthez.js",
+    "name": "table",
+    "src": "resources/js/app/pages/administrator/applicants/sections/table.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
     ]
   },
   "resources/js/app/pages/administrator/dashboard/page.jsx": {
-    "file": "assets/page-DIpqyk9_.js",
+    "file": "assets/page-CHaEdKpm.js",
     "name": "page",
     "src": "resources/js/app/pages/administrator/dashboard/page.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_layout-BUwC9bFw.js"
+      "resources/js/app/pages/administrator/layout.jsx"
+    ]
+  },
+  "resources/js/app/pages/administrator/layout.jsx": {
+    "file": "assets/layout-Bpmx7ROb.js",
+    "name": "layout",
+    "src": "resources/js/app/pages/administrator/layout.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
     ]
   },
   "resources/js/app/pages/administrator/users/page.jsx": {
-    "file": "assets/page-cXfcE9cN.js",
+    "file": "assets/page-CrTqTHLC.js",
     "name": "page",
     "src": "resources/js/app/pages/administrator/users/page.jsx",
     "isDynamicEntry": true,
@@ -44,7 +75,7 @@
     ]
   },
   "resources/js/app/pages/auth/login/page.jsx": {
-    "file": "assets/page-CtwhSq_r.js",
+    "file": "assets/page-BvlFORC9.js",
     "name": "page",
     "src": "resources/js/app/pages/auth/login/page.jsx",
     "isDynamicEntry": true,
@@ -53,7 +84,7 @@
     ]
   },
   "resources/js/app/pages/auth/register/page.jsx": {
-    "file": "assets/page-Oj5y1XyJ.js",
+    "file": "assets/page-SmVB_8zg.js",
     "name": "page",
     "src": "resources/js/app/pages/auth/register/page.jsx",
     "isDynamicEntry": true,
@@ -62,12 +93,13 @@
     ]
   },
   "resources/js/app/pages/index/page.jsx": {
-    "file": "assets/page-D_npoWPI.js",
+    "file": "assets/page-ZsElisVa.js",
     "name": "page",
     "src": "resources/js/app/pages/index/page.jsx",
     "isDynamicEntry": true,
     "imports": [
-      "resources/js/app.jsx"
+      "resources/js/app.jsx",
+      "_exam-service-v1c1vA7u.js"
     ]
   }
 }

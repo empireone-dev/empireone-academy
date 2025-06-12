@@ -11,7 +11,7 @@ export default function Page() {
     const [open, setOpen] = useState(false);
     return (
         <Layout>
-            <div className="flex gap-3">
+            {/* <div className="flex gap-3">
                 <Button loading={true} variant="primary">
                     hello
                 </Button>
@@ -49,7 +49,7 @@ export default function Page() {
             <Button onClick={() => setOpen(true)}>Open</Button>
             <Modal open={open} setOpen={setOpen}>
                 this is the body
-            </Modal>
+            </Modal> */}
         </Layout>
     );
 }

@@ -1,4 +1,7 @@
+import { store_exam_service } from "@/app/services/exam-service";
+import { router } from "@inertiajs/react";
 import React, { useState, useEffect, useCallback } from "react";
+import Swal from "sweetalert2";
 
 const App = () => {
     const [speakingText, setSpeakingText] = useState("");
@@ -6,7 +9,7 @@ const App = () => {
     const [speechSynthesis, setSpeechSynthesis] = useState(null);
     const [answers, setAnswers] = useState({});
     const [automaticScores, setAutomaticScores] = useState({});
-
+    const [name, setName] = useState("");
     const typingTestText =
         "The quick brown fox jumps over the lazy dog. This is a simple typing test to assess your speed and accuracy. Pay close attention to capitalization and punctuation for the best results. Practice regularly to improve your skills.";
     const [typedText, setTypedText] = useState("");
@@ -107,6 +110,11 @@ const App = () => {
     const [grammarScore, setGrammarScore] = useState(null);
     const [grammarExamSubmitted, setGrammarExamSubmitted] = useState(false);
     const [encouragementMessage, setEncouragementMessage] = useState("");
+    const scenario = Object.keys(answers).map((key) => ({
+        id: Number(key),
+        answer: answers[key],
+        score: automaticScores[key] ?? 0,
+    }));
 
     const qaInstruction =
         "For the following scenarios, please answer as if you are a Quality Assurance specialist. Your feedback should be constructive, identifying areas for improvement and suggesting best practices.";
@@ -178,19 +186,6 @@ const App = () => {
             setSpeakingText("");
         }
     }, [speechSynthesis]);
-
-    const handleAnswerChange = useCallback((scenarioId, text) => {
-        setAnswers((prevAnswers) => ({
-            ...prevAnswers,
-            [scenarioId]: text,
-        }));
-        // Clear automatic score when user modifies answer
-        setAutomaticScores((prevScores) => {
-            const newScores = { ...prevScores };
-            delete newScores[scenarioId];
-            return newScores;
-        });
-    }, []);
 
     const modelAnswers = {
         1: {
@@ -328,6 +323,18 @@ const App = () => {
         [answers, modelAnswers]
     );
 
+    const handleAnswerChange = useCallback((scenarioId, text) => {
+        setAnswers((prevAnswers) => ({
+            ...prevAnswers,
+            [scenarioId]: text,
+        }));
+        // Clear automatic score when user modifies answer
+        setAutomaticScores((prevScores) => {
+            const newScores = { ...prevScores };
+            delete newScores[scenarioId];
+            return newScores;
+        });
+    }, []);
     const startTypingTest = useCallback(() => {
         if (!testStarted) {
             setStartTime(Date.now());
@@ -508,26 +515,74 @@ const App = () => {
         }));
     }, []);
 
+    async function submit_data(payload) {
+        console.log('payload',payload)
+        try {
+            const res = await store_exam_service(payload);
+            Swal.fire({
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+            window.location.reload();
+            return res;
+        } catch (error) {
+            Swal.fire({
+                icon: "error",
+                title: "Please complete the form.",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
+    }
     const submitGrammarExam = useCallback(() => {
+        let correctCount = 0;
+        const grammarDetails = {};
+
+        grammarQuestions.forEach((q) => {
+            const userAnswer = (grammarAnswers[q.id] || "")
+                .trim()
+                .toLowerCase();
+            const correctAnswer = q.correctAnswer.trim().toLowerCase();
+            const isCorrect = userAnswer === correctAnswer;
+
+            grammarDetails[q.id] = {
+                question: q.question,
+                userAnswer: userAnswer,
+                correctAnswer: correctAnswer,
+                score: isCorrect ? 1 : 0,
+            };
+
+            if (isCorrect) correctCount += 1;
+        });
+        const payload = {
+            name: name, //--done
+            start_time: startTime,
+            end_time: endTime,
+            typing_test: {
+                word_per_minute: wpm, //--done
+                net_word_per_minute: netWPM, //--done
+                accuracy: accuracy, //--done
+                sentence: typedText, //--done
+            }, //--done
+            scenario, //--done
+            grammar_and_spelling: {
+                ...grammarDetails, //--done
+            }, //--done
+        };
+        console.log("payload", payload);
         // let correctCount = 0;
-        // grammarQuestions.forEach((q) => {
-        //     const userAnswer = (grammarAnswers[q.id] || "")
-        //         .trim()
-        //         .toLowerCase();
-        //     const correctAnswer = q.correctAnswer.trim().toLowerCase();
-        //     if (userAnswer === correctAnswer) {
-        //         correctCount++;
-        //     }
-        // });
+
+        submit_data(payload);
+
         // setGrammarScore(correctCount);
         // setGrammarExamSubmitted(true);
-
         // const spokenMessage = `Good luck with your journey, and keep up the great work!`;
         // setEncouragementMessage(
         //     `You scored ${correctCount} out of ${grammarQuestions.length}. ${spokenMessage}`
         // );
         // speak(spokenMessage);
-        
     }, [grammarAnswers, grammarQuestions, speak]);
 
     const resetGrammarExam = useCallback(() => {
@@ -577,10 +632,14 @@ const App = () => {
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 font-inter text-gray-800">
             {/* Main Container */}
             <div className="container mx-auto max-w-4xl bg-white shadow-xl rounded-2xl p-6 md:p-8">
-                <h1 className="text-4xl md:text-5xl font-extrabold text-center text-indigo-700 mb-8">
-                    EmpireOne Academy
+                <h1 className="text-4xl md:text-5xl font-extrabold flex items-center justify-center text-center text-indigo-700 mb-8">
+                    <img src="/images/logo.png" className="w-96" />
                 </h1>
-
+                <input
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full my-3 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-300 transition-all duration-200 resize-y text-base"
+                    placeholder="Fullname (Juan Dela Cruz)"
+                />
                 {/* Stop Speaking Button */}
                 {isSpeaking && (
                     <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
@@ -871,17 +930,18 @@ const App = () => {
                                 </h4>
                                 <textarea
                                     value={answers[scenario.id] || ""}
-                                    onChange={(e) =>
+                                    onChange={(e) => {
                                         handleAnswerChange(
                                             scenario.id,
                                             e.target.value
-                                        )
-                                    }
+                                        );
+                                        assessAnswer(scenario.id);
+                                    }}
                                     placeholder="Type your answer here, reflecting on improvements or correct responses..."
                                     className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-300 transition-all duration-200 resize-y text-base"
                                     rows="5"
                                 ></textarea>
-                                <div className="flex justify-center mt-4">
+                                {/* <div className="flex justify-center mt-4">
                                     <button
                                         onClick={() =>
                                             assessAnswer(scenario.id)
@@ -911,13 +971,13 @@ const App = () => {
                                         </svg>
                                         <span>Get Automatic Score</span>
                                     </button>
-                                </div>
-                                {automaticScores[scenario.id] !== undefined && (
+                                </div> */}
+                                {/* {automaticScores[scenario.id] !== undefined && (
                                     <p className="mt-4 text-center text-lg font-bold text-green-700">
                                         Automatic Score:{" "}
                                         {automaticScores[scenario.id]}/10
                                     </p>
-                                )}
+                                )} */}
                             </div>
                         </div>
                     ))}

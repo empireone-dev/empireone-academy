@@ -7,7 +7,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('index/page');
-});
+})->name('login');
 
 
 // Route::middleware('auth:sanctum')->prefix('administrator')->group(function () {
@@ -16,15 +16,22 @@ Route::get('/', function () {
 //     });
 // });
 
-Route::prefix('administrator')->group(function () {
+Route::prefix('administrator')->middleware('auth')->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('administrator/dashboard/page');
-    });
+    })->name('dashboard');
+
+    Route::get('applicants', function () {
+        return Inertia::render('administrator/applicants/page');
+    })->name('applicants');
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::prefix('auth')->group(function () {
+    Route::get('login', function () {
+        return Inertia::render('auth/login/page');
+    });
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
