@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('scenarios', function (Blueprint $table) {
             $table->id();
             $table->string('exam_id')->nullable();
-            $table->string('answer')->nullable();
+            $table->longText('answer')->nullable();
             $table->string('score')->nullable();
             $table->timestamps();
         });
