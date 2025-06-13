@@ -1,13 +1,13 @@
 {
-  "_exam-service-v1c1vA7u.js": {
-    "file": "assets/exam-service-v1c1vA7u.js",
+  "_exam-service-ZWnqvbQj.js": {
+    "file": "assets/exam-service-ZWnqvbQj.js",
     "name": "exam-service",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
   "resources/js/app.jsx": {
-    "file": "assets/app-CDw63oS1.js",
+    "file": "assets/app-AwZ-RNuC.js",
     "name": "app",
     "src": "resources/js/app.jsx",
     "isEntry": true,
@@ -22,11 +22,11 @@
       "resources/js/app/pages/index/page.jsx"
     ],
     "css": [
-      "assets/app-BoloPIds.css"
+      "assets/app-jQjyRcCm.css"
     ]
   },
   "resources/js/app/pages/administrator/applicants/page.jsx": {
-    "file": "assets/page-B5Oq7Ja_.js",
+    "file": "assets/page-BMMzxUNU.js",
     "name": "page",
     "src": "resources/js/app/pages/administrator/applicants/page.jsx",
     "isDynamicEntry": true,
@@ -34,11 +34,11 @@
       "resources/js/app.jsx",
       "resources/js/app/pages/administrator/layout.jsx",
       "resources/js/app/pages/administrator/applicants/sections/table.jsx",
-      "_exam-service-v1c1vA7u.js"
+      "_exam-service-ZWnqvbQj.js"
     ]
   },
   "resources/js/app/pages/administrator/applicants/sections/table.jsx": {
-    "file": "assets/table-DCtnthez.js",
+    "file": "assets/table-CzECXKhK.js",
     "name": "table",
     "src": "resources/js/app/pages/administrator/applicants/sections/table.jsx",
     "isDynamicEntry": true,
@@ -47,7 +47,7 @@
     ]
   },
   "resources/js/app/pages/administrator/dashboard/page.jsx": {
-    "file": "assets/page-CHaEdKpm.js",
+    "file": "assets/page-BmGO73HS.js",
     "name": "page",
     "src": "resources/js/app/pages/administrator/dashboard/page.jsx",
     "isDynamicEntry": true,
@@ -57,7 +57,7 @@
     ]
   },
   "resources/js/app/pages/administrator/layout.jsx": {
-    "file": "assets/layout-Bpmx7ROb.js",
+    "file": "assets/layout-CIVqpiLs.js",
     "name": "layout",
     "src": "resources/js/app/pages/administrator/layout.jsx",
     "isDynamicEntry": true,
@@ -66,7 +66,7 @@
     ]
   },
   "resources/js/app/pages/administrator/users/page.jsx": {
-    "file": "assets/page-CrTqTHLC.js",
+    "file": "assets/page-qDbWO47L.js",
     "name": "page",
     "src": "resources/js/app/pages/administrator/users/page.jsx",
     "isDynamicEntry": true,
@@ -75,7 +75,7 @@
     ]
   },
   "resources/js/app/pages/auth/login/page.jsx": {
-    "file": "assets/page-BvlFORC9.js",
+    "file": "assets/page-1gKMvu4m.js",
     "name": "page",
     "src": "resources/js/app/pages/auth/login/page.jsx",
     "isDynamicEntry": true,
@@ -84,7 +84,7 @@
     ]
   },
   "resources/js/app/pages/auth/register/page.jsx": {
-    "file": "assets/page-SmVB_8zg.js",
+    "file": "assets/page-Dd-3-wAG.js",
     "name": "page",
     "src": "resources/js/app/pages/auth/register/page.jsx",
     "isDynamicEntry": true,
@@ -93,13 +93,13 @@
     ]
   },
   "resources/js/app/pages/index/page.jsx": {
-    "file": "assets/page-ZsElisVa.js",
+    "file": "assets/page-DcEWNY5R.js",
     "name": "page",
     "src": "resources/js/app/pages/index/page.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_exam-service-v1c1vA7u.js"
+      "_exam-service-ZWnqvbQj.js"
     ]
   }
 }

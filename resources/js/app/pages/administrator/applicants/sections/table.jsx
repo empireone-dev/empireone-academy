@@ -48,49 +48,92 @@ export default function ApplicantsTable() {
                                     >
                                         Accuracy
                                     </th>
+                                    <th
+                                        scope="col"
+                                        className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                                    >
+                                        Total
+                                    </th>
+                                    <th
+                                        scope="col"
+                                        className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                                    >
+                                        Status
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
                                 {exams?.data?.map((res) => {
                                     const total_grammar_and_spelling =
-                                        res.grammar_and_spellings.reduce(
+                                        (res.grammar_and_spellings.reduce(
                                             (sum, item) =>
                                                 sum + Number(item.score),
                                             0
-                                        );
+                                        ) /
+                                            res.grammar_and_spellings.length) *
+                                        100;
                                     const total_scenarios =
                                         res.scenarios.reduce(
                                             (sum, item) =>
                                                 sum + Number(item.score),
                                             0
-                                        );
+                                        ) * 1;
+                                    const word_per_min =
+                                        (res.typing_test.word_per_minute / 40) *
+                                        100;
+
+                                    const net_word_per_min =
+                                        (res.typing_test.net_word_per_minute /
+                                            40) *
+                                        100;
+                                    const status = (
+                                        (total_scenarios +
+                                            Number(total_grammar_and_spelling) +
+                                            word_per_min +
+                                            net_word_per_min +
+                                            Number(res.typing_test.accuracy)) /
+                                        5
+                                    ).toFixed(2);
+
                                     return (
                                         <tr key={res.email}>
                                             <td className="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-0">
                                                 {res.name}
                                             </td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">
-                                                {total_scenarios}points
+                                                {total_scenarios}%
                                             </td>
 
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">
-                                                {total_grammar_and_spelling}
-                                                points
+                                                {total_grammar_and_spelling.toFixed(
+                                                    2
+                                                )}
+                                                %
                                             </td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">
-                                                {
-                                                    res.typing_test
-                                                        .word_per_minute
-                                                }
+                                                {word_per_min}%
                                             </td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">
-                                                {
-                                                    res.typing_test
-                                                        .net_word_per_minute
-                                                }
+                                                {net_word_per_min}%
                                             </td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">
                                                 {res.typing_test.accuracy}
+                                            </td>
+                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">
+                                                {status}
+                                            </td>
+                                            <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">
+                                                <button
+                                                    className={`px-4 py-1.5 rounded-xl font-semibold text-white shadow-md transition-all duration-300 ${
+                                                        status > 75
+                                                            ? "bg-green-500 hover:bg-green-600"
+                                                            : "bg-red-500 hover:bg-red-600"
+                                                    }`}
+                                                >
+                                                    {status > 75
+                                                        ? "PASSED"
+                                                        : "FAILED"}
+                                                </button>
                                             </td>
                                         </tr>
                                     );
