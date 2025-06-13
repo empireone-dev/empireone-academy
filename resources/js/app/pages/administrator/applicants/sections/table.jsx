@@ -73,11 +73,13 @@ export default function ApplicantsTable() {
                                             res.grammar_and_spellings.length) *
                                         100;
                                     const total_scenarios =
-                                        res.scenarios.reduce(
+                                        (res.scenarios.reduce(
                                             (sum, item) =>
                                                 sum + Number(item.score),
                                             0
-                                        ) * 1;
+                                        ) /
+                                            res.scenarios.length) *
+                                        10;
                                     const word_per_min =
                                         (res.typing_test.word_per_minute / 40) *
                                         100;
@@ -94,7 +96,16 @@ export default function ApplicantsTable() {
                                             Number(res.typing_test.accuracy)) /
                                         5
                                     ).toFixed(2);
-
+                                    console.log(
+                                        "dadada",
+                                        (res.scenarios.reduce(
+                                            (sum, item) =>
+                                                sum + Number(item.score),
+                                            0
+                                        ) /
+                                            res.scenarios.length) *
+                                            10
+                                    );
                                     return (
                                         <tr key={res.email}>
                                             <td className="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-0">
