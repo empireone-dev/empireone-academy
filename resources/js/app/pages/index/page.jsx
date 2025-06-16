@@ -20,7 +20,7 @@ const App = () => {
     const [netWPM, setNetWPM] = useState(0);
     const [testStarted, setTestStarted] = useState(false);
     const [testCompleted, setTestCompleted] = useState(false);
-
+    const [loading, setLoading] = useState(false);
     const grammarQuestions = [
         {
             id: 1,
@@ -173,7 +173,7 @@ const App = () => {
         // Only play intro if synthesis is ready and not already speaking
         if (speechSynthesis && !isSpeaking) {
             const timeoutId = setTimeout(() => {
-                speak(introScript);
+                // speak(introScript);
             }, 500); // Small delay to ensure synthesis is ready
             return () => clearTimeout(timeoutId);
         }
@@ -516,15 +516,17 @@ const App = () => {
     }, []);
 
     async function submit_data(payload) {
-        console.log('payload',payload)
+        console.log("payload", payload);
         try {
+            setLoading(true);
             const res = await store_exam_service(payload);
-            Swal.fire({
+            await Swal.fire({
                 icon: "success",
                 title: "Your work has been saved",
                 showConfirmButton: false,
                 timer: 1500,
             });
+            setLoading(false);
             window.location.reload();
             return res;
         } catch (error) {
@@ -1154,6 +1156,7 @@ const App = () => {
                             </div>
                             <div className="flex justify-center mt-6">
                                 <button
+                                    disabled={loading}
                                     onClick={submitGrammarExam}
                                     className="px-8 py-3 bg-purple-600 text-white font-semibold rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
                                 >

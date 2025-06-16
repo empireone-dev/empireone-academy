@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux";
+import ScenarioSection from "./scenario-section";
+import GrammarSection from "./grammar-section";
 
 export default function ApplicantsTable() {
     const { exams } = useSelector((store) => store.exams);
@@ -82,7 +84,12 @@ export default function ApplicantsTable() {
                                         10;
                                     const word_per_min =
                                         (res.typing_test.word_per_minute / 40) *
-                                        100;
+                                            100 <
+                                        100
+                                            ? (res.typing_test.word_per_minute /
+                                                  40) *
+                                              100
+                                            : 50;
 
                                     const net_word_per_min =
                                         (res.typing_test.net_word_per_minute /
@@ -112,14 +119,25 @@ export default function ApplicantsTable() {
                                                 {res.name}
                                             </td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">
-                                                {total_scenarios}%
+                                                <ScenarioSection
+                                                    data={{
+                                                        ...res,
+                                                        total_scenarios:
+                                                            total_scenarios,
+                                                    }}
+                                                />
                                             </td>
 
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">
-                                                {total_grammar_and_spelling.toFixed(
-                                                    2
-                                                )}
-                                                %
+                                                <GrammarSection
+                                                    data={{
+                                                        ...res,
+                                                        total_grammar_and_spelling:
+                                                            total_grammar_and_spelling.toFixed(
+                                                                2
+                                                            ),
+                                                    }}
+                                                />
                                             </td>
                                             <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">
                                                 {word_per_min}%

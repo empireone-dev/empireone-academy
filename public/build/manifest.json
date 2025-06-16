@@ -1,18 +1,35 @@
 {
-  "_exam-service-C2U8FsQO.js": {
-    "file": "assets/exam-service-C2U8FsQO.js",
+  "_exam-service-C46BBTHH.js": {
+    "file": "assets/exam-service-C46BBTHH.js",
     "name": "exam-service",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
+  "_modal-ChBKHi5F.js": {
+    "file": "assets/modal-ChBKHi5F.js",
+    "name": "modal",
+    "imports": [
+      "resources/js/app.jsx",
+      "_transition-DGNFfMxq.js"
+    ]
+  },
+  "_transition-DGNFfMxq.js": {
+    "file": "assets/transition-DGNFfMxq.js",
+    "name": "transition",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
   "resources/js/app.jsx": {
-    "file": "assets/app-CsbkMCAC.js",
+    "file": "assets/app-C21fJr-n.js",
     "name": "app",
     "src": "resources/js/app.jsx",
     "isEntry": true,
     "dynamicImports": [
       "resources/js/app/pages/administrator/applicants/page.jsx",
+      "resources/js/app/pages/administrator/applicants/sections/grammar-section.jsx",
+      "resources/js/app/pages/administrator/applicants/sections/scenario-section.jsx",
       "resources/js/app/pages/administrator/applicants/sections/table.jsx",
       "resources/js/app/pages/administrator/dashboard/page.jsx",
       "resources/js/app/pages/administrator/layout.jsx",
@@ -22,11 +39,11 @@
       "resources/js/app/pages/index/page.jsx"
     ],
     "css": [
-      "assets/app-jQjyRcCm.css"
+      "assets/app-DENQIjxK.css"
     ]
   },
   "resources/js/app/pages/administrator/applicants/page.jsx": {
-    "file": "assets/page-C5X3pewl.js",
+    "file": "assets/page-D0LTjSx0.js",
     "name": "page",
     "src": "resources/js/app/pages/administrator/applicants/page.jsx",
     "isDynamicEntry": true,
@@ -34,39 +51,71 @@
       "resources/js/app.jsx",
       "resources/js/app/pages/administrator/layout.jsx",
       "resources/js/app/pages/administrator/applicants/sections/table.jsx",
-      "_exam-service-C2U8FsQO.js"
+      "_exam-service-C46BBTHH.js",
+      "_transition-DGNFfMxq.js",
+      "resources/js/app/pages/administrator/applicants/sections/scenario-section.jsx",
+      "_modal-ChBKHi5F.js",
+      "resources/js/app/pages/administrator/applicants/sections/grammar-section.jsx"
+    ]
+  },
+  "resources/js/app/pages/administrator/applicants/sections/grammar-section.jsx": {
+    "file": "assets/grammar-section-C-1_BQRT.js",
+    "name": "grammar-section",
+    "src": "resources/js/app/pages/administrator/applicants/sections/grammar-section.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_modal-ChBKHi5F.js",
+      "_transition-DGNFfMxq.js"
+    ]
+  },
+  "resources/js/app/pages/administrator/applicants/sections/scenario-section.jsx": {
+    "file": "assets/scenario-section-DxGj0dLX.js",
+    "name": "scenario-section",
+    "src": "resources/js/app/pages/administrator/applicants/sections/scenario-section.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_modal-ChBKHi5F.js",
+      "_transition-DGNFfMxq.js"
     ]
   },
   "resources/js/app/pages/administrator/applicants/sections/table.jsx": {
-    "file": "assets/table-CY7xpCZA.js",
+    "file": "assets/table-q3rDjqku.js",
     "name": "table",
     "src": "resources/js/app/pages/administrator/applicants/sections/table.jsx",
     "isDynamicEntry": true,
     "imports": [
-      "resources/js/app.jsx"
+      "resources/js/app.jsx",
+      "resources/js/app/pages/administrator/applicants/sections/scenario-section.jsx",
+      "resources/js/app/pages/administrator/applicants/sections/grammar-section.jsx",
+      "_modal-ChBKHi5F.js",
+      "_transition-DGNFfMxq.js"
     ]
   },
   "resources/js/app/pages/administrator/dashboard/page.jsx": {
-    "file": "assets/page-DRb9uuuX.js",
+    "file": "assets/page-CAaGeTkG.js",
     "name": "page",
     "src": "resources/js/app/pages/administrator/dashboard/page.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "resources/js/app/pages/administrator/layout.jsx"
+      "resources/js/app/pages/administrator/layout.jsx",
+      "_transition-DGNFfMxq.js"
     ]
   },
   "resources/js/app/pages/administrator/layout.jsx": {
-    "file": "assets/layout-CJfqUOG1.js",
+    "file": "assets/layout-Bs-X-YBN.js",
     "name": "layout",
     "src": "resources/js/app/pages/administrator/layout.jsx",
     "isDynamicEntry": true,
     "imports": [
-      "resources/js/app.jsx"
+      "resources/js/app.jsx",
+      "_transition-DGNFfMxq.js"
     ]
   },
   "resources/js/app/pages/administrator/users/page.jsx": {
-    "file": "assets/page-aAfd7BVX.js",
+    "file": "assets/page-DxKNTeLG.js",
     "name": "page",
     "src": "resources/js/app/pages/administrator/users/page.jsx",
     "isDynamicEntry": true,
@@ -75,7 +124,7 @@
     ]
   },
   "resources/js/app/pages/auth/login/page.jsx": {
-    "file": "assets/page-B1QnA-ee.js",
+    "file": "assets/page-D86jHYrb.js",
     "name": "page",
     "src": "resources/js/app/pages/auth/login/page.jsx",
     "isDynamicEntry": true,
@@ -84,7 +133,7 @@
     ]
   },
   "resources/js/app/pages/auth/register/page.jsx": {
-    "file": "assets/page-BxUzyQZk.js",
+    "file": "assets/page-BtVc572O.js",
     "name": "page",
     "src": "resources/js/app/pages/auth/register/page.jsx",
     "isDynamicEntry": true,
@@ -93,13 +142,13 @@
     ]
   },
   "resources/js/app/pages/index/page.jsx": {
-    "file": "assets/page-ZiUG0j_l.js",
+    "file": "assets/page-B5blDbq2.js",
     "name": "page",
     "src": "resources/js/app/pages/index/page.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_exam-service-C2U8FsQO.js"
+      "_exam-service-C46BBTHH.js"
     ]
   }
 }
